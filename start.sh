@@ -43,13 +43,13 @@ download_program() {
 }
 
 
-download_program "nm" "https://github.com/fscarmen2/X-for-Botshard-ARM/raw/main/nezha-agent" "https://github.com/fscarmen2/X-for-Stozu/raw/main/nezha-agent"
+download_program "nm" "https://github.com/lovelves/bishi/raw/main/nezha-agent-arm" "https://github.com/lovelves/bishi/raw/main/nezha-agent-amd"
 sleep 6
 
-download_program "web" "https://github.com/fscarmen2/X-for-Botshard-ARM/raw/main/web.js" "https://github.com/fscarmen2/X-for-Stozu/raw/main/web.js"
+download_program "web" "https://github.com/lovelves/bishi/raw/main/web-arm.js" "https://github.com/lovelves/bishi/raw/main/web-amd.js"
 sleep 6
 
-download_program "cc" "https://github.com/cloudflare/cloudflared/releases/download/2023.8.0/cloudflared-linux-arm64" "https://github.com/cloudflare/cloudflared/releases/download/2023.8.0/cloudflared-linux-amd64"
+download_program "cc" "https://github.com/cloudflare/cloudflared/releases/download/2023.7.0/cloudflared-linux-arm64" "https://github.com/cloudflare/cloudflared/releases/download/2023.7.0/cloudflared-linux-amd64"
 sleep 6
 
 cleanup_files() {
