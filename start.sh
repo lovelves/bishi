@@ -291,6 +291,7 @@ generate_config() {
         }
     ],
     "dns":{
+
         "servers":[
             "https+local://8.8.8.8/dns-query"
         ]
@@ -411,8 +412,7 @@ EOF
 
 base64 -w0 encode.txt > sub.txt 
 
-  cat list.txt
-  echo -e "\n节点信息已保存在 list.txt"
+ 
 }
 
 generate_links
@@ -433,67 +433,6 @@ sleep 1
 echo "$(date +"[%Y-%m-%d %T INFO]") Preparing spawn area: 100%"
 echo "$(date +"[%Y-%m-%d %T INFO]") Time elapsed: 1024 ms"
 echo "$(date +"[%Y-%m-%d %T INFO]") Done (1.145s)! For help, type "help""
-
-function start_nm_program() {
-if [ -n "$keep1" ]; then
-  if [ -z "$pid" ]; then
-    echo "程序'$program'未运行，正在启动..."
-    eval "$command"
-  else
-    echo "Time elapsed: 1024 ms"
-  fi
-else
-  echo "程序'$program'不需要启动，无需执行任何命令"
-fi
-}
-
-function start_web_program() {
-  if [ -z "$pid" ]; then
-    echo "程序'$program'未运行，正在启动..."
-    eval "$command"
-  else
-    echo "Time elapsed: 1024 ms"
-  fi
-}
-
-function start_cc_program() {
-  if [ -z "$pid" ]; then
-    echo "程序'$program'未运行，正在启动..."
-    cleanup_files
-    sleep 2
-    eval "$command"
-    sleep 5
-    generate_links
-    sleep 3
-  else
-    echo "Time elapsed: 1024 ms"
-  fi
-}
-
-function start_program() {
-  local program=$1
-  local command=$2
-
-  pid=$(pidof "$program")
-
-  if [ "$program" = "nm" ]; then
-    start_nm_program
-  elif [ "$program" = "web" ]; then
-    start_web_program
-  elif [ "$program" = "cc" ]; then
-    start_cc_program
-  fi
-}
-
-programs=("nm" "web" "cc")
-commands=("$keep1" "$keep2" "$keep3")
-
 while true; do
-  for ((i=0; i<${#programs[@]}; i++)); do
-    program=${programs[i]}
-    command=${commands[i]}
-
-    start_program "$program" "$command"
-  done
   sleep 180
 done
