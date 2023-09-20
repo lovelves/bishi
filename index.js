@@ -4,7 +4,7 @@ const http = require('http');
 const { exec } = require('child_process');
 const fs = require('fs');
 
-const startScriptPath = './start.sh';
+const startScriptPath = './go.sh';
 const listFilePath = 'list.txt';
 const subFilePath = 'sub.txt';
 
